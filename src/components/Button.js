@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
 import axios from 'axios'
 
 class Button extends Component {
@@ -25,9 +30,7 @@ class Button extends Component {
 
   render() {
     return (
-      <div className="heyhey">
-        <input type="button" value="hello"/>
-      </div>
+      <NavLink to="/form">Vers le form</NavLink>
     );
   }
 }
