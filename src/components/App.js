@@ -1,62 +1,31 @@
 import React, { Component } from 'react';
-import logo from '../assets/logo.svg';
 import './App.css';
 import {
   Route,
   NavLink,
-  HashRouter
+  Switch
 } from "react-router-dom";
-import Album from "./Album";
 import Form from "./Form";
+import List from "./List";
 import Songs from "./Songs";
 import axios from 'axios';
 
 
 class App extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-      listAlbums: []
-    }
-  }
-
-  componentDidMount() {
-    axios.get("http://localhost:8000/api/albums")
-      .then(response => {
-          this.setState({
-              listAlbums: response.data
-          });
-
-          return response;
-      })
-  }
-
   render() {
     return (
-      <HashRouter>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Header</h1>
-          </header>
-          <Route exact path="/" render={() => this.state.listAlbums.map((album) =>
-              <li><Album 
-              id={album.id} 
-              title={album.title}
-              artist={album.artist}
-              img={album.img}
-              year={album.year}
-              /></li>
-          )}/>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={List}/>
           <Route path="/form" component={Form}/>
           <Route path="/album/:albumId" component={Songs}/>
-          
-          <div>
-            <NavLink to={"/form"}>New Album</NavLink>
-          </div>
+        </Switch>
+        <br/>
+        <div>
+          <NavLink to={"/form"}>New Album</NavLink>
         </div>
-      </HashRouter>
+      </div>
     );
   }
 }
