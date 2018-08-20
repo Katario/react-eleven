@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Route,
-  NavLink,
-  HashRouter
-} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class Album extends Component {
 
@@ -17,7 +13,7 @@ class Album extends Component {
         <span>{this.props.title} </span>    
         <span> {this.props.img} </span>
         <span> {this.props.artist} </span> 
-        <NavLink to={`/songs/${this.props.id}`}>Plus d'informations </NavLink>
+        <NavLink to={`/album/${this.props.id}`}>Plus d'informations </NavLink>
       </div>
     );
   }

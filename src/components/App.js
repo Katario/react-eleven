@@ -9,7 +9,6 @@ import {
 import Album from "./Album";
 import Form from "./Form";
 import Songs from "./Songs";
-import Button from "./Button";
 import axios from 'axios';
 
 
@@ -42,7 +41,7 @@ class App extends Component {
             <h1 className="App-title">Header</h1>
           </header>
           <Route exact path="/" render={() => this.state.listAlbums.map((album) =>
-            <li><Album 
+              <li><Album 
               id={album.id} 
               title={album.title}
               artist={album.artist}
@@ -50,10 +49,9 @@ class App extends Component {
               year={album.year}
               /></li>
           )}/>
-
           <Route path="/form" component={Form}/>
           <Route path="/album/:albumId" component={Songs}/>
-
+          
           <div>
             <NavLink to={"/form"}>New Album</NavLink>
           </div>
